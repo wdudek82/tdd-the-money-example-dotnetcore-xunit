@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ConsoleSandboxApp\ConsoleSandboxApp.csproj" />
+      <ProjectReference Include="..\TddMoneyExample\TddMoneyExample.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleSandboxApp", "ConsoleSandboxApp\ConsoleSandboxApp.csproj", "{053E52EE-6201-4435-9D1E-2889CCE7FACD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TddMoneyExample", "TddMoneyExample\TddMoneyExample.csproj", "{053E52EE-6201-4435-9D1E-2889CCE7FACD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyExampleTests", "MoneyExampleTests\MoneyExampleTests.csproj", "{974C1BA5-4A0B-4293-B25E-DC5A147CD249}"
 EndProject
