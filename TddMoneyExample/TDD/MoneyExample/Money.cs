@@ -1,29 +1,46 @@
-using System;
-
 namespace TddMoneyExample.TDD.MoneyExample
 {
-    public abstract class Money
+    public class Money : Expression
     {
-        protected int Amount;
-
-        public static Money dollar(int amount)
+        public Money(int amount, string currency)
         {
-            return new Dollar(amount);
+            Amount = amount;
+            Currency = currency;
         }
 
-        public static Money franc(int amount)
+        public int Amount { get; }
+        public string Currency { get; }
+
+        public static Money Dollar(int amount)
         {
-            return new Franc(amount);
+            return new Money(amount, "USD");
         }
 
-        public abstract Money Times(int amount);
+        public static Money Franc(int amount)
+        {
+            return new Money(amount, "CHF");
+        }
+
+        public Money Times(int multiplier)
+        {
+            return new Money(Amount * multiplier, Currency);
+        }
+
+        public Expression Plus(Money addend)
+        {
+            return new Sum(this, addend);
+        }
 
         public override bool Equals(object? obj)
         {
             var money = (Money) obj;
             return Amount == money?.Amount
-                && GetType() == obj.GetType();
+                   && Currency.Equals(money.Currency);
+        }
+
+        public override string ToString()
+        {
+            return $"{Amount} {Currency}";
         }
     }
-
 }
