@@ -1,6 +1,6 @@
 namespace TddMoneyExample.TDD.MoneyExample
 {
-    public class Money : Expression
+    public class Money : IExpression
     {
         public Money(int amount, string currency)
         {
@@ -21,14 +21,20 @@ namespace TddMoneyExample.TDD.MoneyExample
             return new Money(amount, "CHF");
         }
 
-        public Money Times(int multiplier)
+        public IExpression Times(int multiplier)
         {
             return new Money(Amount * multiplier, Currency);
         }
 
-        public Expression Plus(Money addend)
+        public IExpression Plus(IExpression addend)
         {
             return new Sum(this, addend);
+        }
+
+        public Money Reduce(Bank bank, string to)
+        {
+            var rate = bank.Rate(Currency, to);
+            return new Money(Amount / rate, to);
         }
 
         public override bool Equals(object? obj)

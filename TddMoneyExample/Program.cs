@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TddMoneyExample
+﻿namespace TddMoneyExample
 {
     internal class Program
     {

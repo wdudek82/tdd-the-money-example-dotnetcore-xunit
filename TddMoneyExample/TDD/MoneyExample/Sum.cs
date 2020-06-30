@@ -1,22 +1,34 @@
-using System;
+using System.Linq.Expressions;
 
 namespace TddMoneyExample.TDD.MoneyExample
 {
-    public class Sum : Expression
+    public class Sum : IExpression
     {
-        public Sum(Money augend, Money addend)
+        public Sum(IExpression augend, IExpression addend)
         {
             Augend = augend;
             Addend = addend;
         }
 
-        public Money Augend { get; set; }
-        public Money Addend { get; set; }
+        public IExpression Augend { get; }
+        public IExpression Addend { get; }
 
-        public Money Reduce(string to)
+        public Money Reduce(Bank bank, string to)
         {
-            var amount = Augend.Amount + Addend.Amount;
+            var reducedAugend = Augend.Reduce(bank, to);
+            var reducedAddend = Addend.Reduce(bank, to);
+            var amount = reducedAugend.Amount + reducedAddend.Amount;
             return new Money(amount, to);
+        }
+
+        public IExpression Plus(IExpression addend)
+        {
+            return new Sum(this, addend);
+        }
+
+        public IExpression Times(int multiplier)
+        {
+            return new Sum(Augend.Times(multiplier), Addend.Times(multiplier));
         }
     }
 }
